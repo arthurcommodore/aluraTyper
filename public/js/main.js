@@ -5,6 +5,7 @@ $(function() {
 	areaEvent()
 	timeEvent()
 	buttonEvent()
+	eventRemove()
 })
 
 function areaEvent() {
@@ -41,14 +42,18 @@ function timeEvent() {
 
 			tempo.text(count)
 			if(count < 1) {
-				area.attr('disabled', true)
 				clearInterval(id)
-
-				$('#reset').attr('disabled', false)
-				area.addClass('campo-desativado')
+				finish()
 			}
 		}, 1000)
 	})
+}
+
+function finish() {
+	area.attr('disabled', true)
+	$('#reset').attr('disabled', false)
+	area.addClass('campo-desativado')
+	insertPlacar()
 }
 
 function buttonEvent() {
@@ -64,5 +69,29 @@ function buttonEvent() {
 		area.val("")
 		$('#tempo').text(tempoInicial)
 		timeEvent()
+	})
+}
+
+function insertPlacar() {
+	const tBody = $('.placar').find("tbody")
+	const usuario = "Arthur"
+	const numPalavra = $('#contadorPalavra').text()
+	const botaoRemove = `<a href="" class='botao-remove'>
+							<i class="small material-icons">delete</i>
+						</a>`
+
+	const linha = `<tr>
+						<td> ${usuario}</td>
+						<td> ${numPalavra} </td>
+						<td> ${botaoRemove} </td>
+					</tr>`
+	tBody.prepend($(linha))
+	eventRemove()
+}
+
+function eventRemove() {
+	$('.botao-remove').click(function(e) {
+		e.preventDefault()
+		$(this).parent().parent().remove()
 	})
 }
