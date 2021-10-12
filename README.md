@@ -1,2 +1,2 @@
 # aluraTyper
-Jogo de digitação com utlizando JQuery
+Jogo de digitação utlizando JQuery
