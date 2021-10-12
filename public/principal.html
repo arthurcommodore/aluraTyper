@@ -3,23 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Alura Typer</title>
+    <link rel="stylesheet" href="./css/libs/materialize.min.css">
+    <link rel="stylesheet" href="./css/libs/google-fonts.css">
+    <link rel="stylesheet" href="./css/estilos.css">
 </head>
 <body>
-    <h1>Alura Typer</h1>
-    <p class="frase">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
-
-    <ul class="informacoes">
-        <li><span id="qtdPalavras"></span> palavras</li>
-        <li><span id="tempo">2</span> seg</li>
-    </ul>
-
-    <textarea class="campo" rows="8" cols="40"></textarea>
-    <button>reset</button>
-    <ul>
-        <li><span id="contadorCaracter">0</span> caractere</li>
-        <li><span id="contadorPalavra">0</span> palavras</li>
-    </ul>
-
+    <div class="container">
+        <h1 class="center">Alura Typer</h1>
+        <p class="frase center">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
+    
+        <ul class="informacoes center">
+            <li>
+                <i class="small material-icons icones">description</i>
+                <span id="qtdPalavras"></span> palavras
+            </li>
+            <li>
+                <i class="small material-icons icones">query_builder</i>
+                <span id="tempo">10</span> seg
+            </li>
+        </ul>
+    
+        <textarea class="campo" rows="8" cols="40"></textarea>
+        <div class="botoes">
+            <a class="btn-floating btn-large waves-effect waves-light red" id="reset">
+                <i class="material-icons">restore</i>
+            </a>
+        </div>
+        <ul class="center">
+            <li><span id="contadorCaracter">0</span> caractere</li>
+            <li><span id="contadorPalavra">0</span> palavras</li>
+        </ul>
+    </div>
+    
     <script type="text/javascript" src="./js/jquery.js"></script>
     <script type="text/javascript" src="./js/main.js"></script>
 </body>
