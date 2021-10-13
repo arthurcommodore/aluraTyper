@@ -1,24 +1,32 @@
-const tempoInicial = $('#tempo').text()
+let tempoInicial = $('#tempo').text()
 const area = $('textarea')
-const frase = $('.frase').text()
+
 $(function() {
 	areaEvent()
 	timeEvent()
-	buttonEvent()
+	eventReset()
 	eventRemove()
+	refreshPlacar()
 })
 
-function areaEvent() {
+function refreshQtd() {
 	const num = $('p.frase').text().split(' ').length
 	$('#qtdPalavras').text(num)
+}
 
+function refreshTime(time) {
+	tempoInicial = time
+	$('#tempo').text(time)
+}
+
+function areaEvent() {
+	refreshQtd()
 	area.on('input', function() {
-
+		let frase = $('.frase').text()
 		let conteudo = area.val()
 		let qtd = conteudo.trim().split(/\S+/).length - 1
 		let comparavel = frase.substr(0, conteudo.length)
 
-		console.log(conteudo)
 		$('#contadorCaracter').text(conteudo.trim().length)
 		$('#contadorPalavra').text(qtd)
 
@@ -37,7 +45,7 @@ function timeEvent() {
 	let count = parseInt(tempo.text())
 	area.one('focus', function() {
 		$('#reset').attr('disabled', true)
-		const id = setInterval(() => {
+		 const id = setInterval(() => {
 			count--
 
 			tempo.text(count)
@@ -56,8 +64,8 @@ function finish() {
 	insertPlacar()
 }
 
-function buttonEvent() {
-	$('#reset').click(() => {
+function eventReset() {
+	$('#reset').on('click', () => {
 		$('#contadorCaracter').text(0)
 		$('#contadorPalavra').text(0)
 
@@ -72,26 +80,6 @@ function buttonEvent() {
 	})
 }
 
-function insertPlacar() {
-	const tBody = $('.placar').find("tbody")
-	const usuario = "Arthur"
-	const numPalavra = $('#contadorPalavra').text()
-	const botaoRemove = `<a href="" class='botao-remove'>
-							<i class="small material-icons">delete</i>
-						</a>`
-
-	const linha = `<tr>
-						<td> ${usuario}</td>
-						<td> ${numPalavra} </td>
-						<td> ${botaoRemove} </td>
-					</tr>`
-	tBody.prepend($(linha))
-	eventRemove()
-}
-
-function eventRemove() {
-	$('.botao-remove').click(function(e) {
-		e.preventDefault()
-		$(this).parent().parent().remove()
-	})
+function parallax() {
+	
 }
