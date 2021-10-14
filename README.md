@@ -1,5 +1,5 @@
 # aluraTyper
-## Jogo de digitação utlizando JQuery
+## Jogo de digitação do curso da Alura de JQuery
 
 ### Página Inicial:
 
